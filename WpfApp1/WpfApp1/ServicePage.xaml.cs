@@ -23,6 +23,8 @@ namespace WpfApp1
         public ServicePage()
         {
             InitializeComponent();
+            var currentServices = Иванов_autoserviceEntities.GetContext().Service.ToList();
+            ServiceListView.ItemsSource = currentServices;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
