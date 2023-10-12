@@ -41,6 +41,11 @@ namespace WpfApp1
             UpdateServices();
         }
 
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateServices();
+        }
+
         private void RButtonUp_Checked(object sender, RoutedEventArgs e)
         {
             UpdateServices();
@@ -80,6 +85,8 @@ namespace WpfApp1
                 currentServices = currentServices.Where(p => (p.Discount >= 70 && p.Discount <= 100)).ToList();
             }
 
+            currentServices = currentServices.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+
             if (RButtonDown.IsChecked.Value)
             {
                 currentServices = currentServices.OrderByDescending(p => p.Cost).ToList();
@@ -93,9 +100,6 @@ namespace WpfApp1
             ServiceListView.ItemsSource = currentServices;
         }
 
-        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateServices();
-        }
+
     }
 }
