@@ -106,6 +106,8 @@ namespace WpfApp1
             }
 
             ServiceListView.ItemsSource = currentServices;
+            TableList = currentServices;
+            ChangePage(0,0);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -160,12 +162,12 @@ namespace WpfApp1
 
         private void LeftDirButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangePage(1, null);
         }
 
         private void RightDirButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangePage(2, null);
         }
         private void ChangePage(int direction, int? selectedPage)
         {
@@ -217,10 +219,20 @@ namespace WpfApp1
                     {
                         PageListBox.Items.Add(i);
                     }
+
+                    min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * +10 : CountRecords;
+                    TBCount.Text = min.ToString();
+                    TBAllRecords.Text = " из " + CountRecords.ToString();
+
                     ServiceListView.ItemsSource = CurrentPageList;
                     ServiceListView.Items.Refresh();
                 }
             }
+        }
+
+        private void PageListBox_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
         }
     }
 }
