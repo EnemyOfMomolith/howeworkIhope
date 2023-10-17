@@ -126,7 +126,9 @@ namespace WpfApp1
             {
                 Иванов_autoserviceEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 ServiceListView.ItemsSource = Иванов_autoserviceEntities1.GetContext().Service.ToList();
+                
             }
+            UpdateServices();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -138,6 +140,7 @@ namespace WpfApp1
 
             if (currentClientServices.Count != 0)
                 MessageBox.Show("Невозможно удалить, так как существуют записи на эту услугу");
+                
             else
             {
                 if (MessageBox.Show("Вы точно хотите выполнить удаление?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -222,7 +225,7 @@ namespace WpfApp1
                     PageListBox.Items.Add(i);
                 }
 
-                min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * +10 : CountRecords;
+                min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage *10 +10 : CountRecords;
                 TBCount.Text = min.ToString();
                 TBAllRecords.Text = " из " + CountRecords.ToString();
 
