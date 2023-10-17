@@ -12,21 +12,23 @@ namespace WpfApp1
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class Иванов_autoserviceEntities : DbContext
+    
+    public partial class Иванов_autoserviceEntities1 : DbContext
     {
-        public Иванов_autoserviceEntities()
-            : base("name=Иванов_autoserviceEntities")
-        {   
-        }
+        private static Иванов_autoserviceEntities1 _context;
 
-        private static Иванов_autoserviceEntities _context;
-
-        public static Иванов_autoserviceEntities GetContext()
+        public static Иванов_autoserviceEntities1 GetContext()
         {
-            if(_context == null)
-                _context = new Иванов_autoserviceEntities();
-            return _context;
+            if (_context == null)
+            {
+                _context = new Иванов_autoserviceEntities1();
+            }
+                return _context;
+            
+        }
+        public Иванов_autoserviceEntities1()
+            : base("name=Иванов_autoserviceEntities1")
+        {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

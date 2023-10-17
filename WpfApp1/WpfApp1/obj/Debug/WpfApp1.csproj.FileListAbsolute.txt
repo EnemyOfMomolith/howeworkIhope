@@ -43,3 +43,31 @@ C:\Users\УАТ\Source\Repos\howeworkIhope\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csp
 C:\Users\УАТ\Source\Repos\howeworkIhope\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 C:\Users\УАТ\Source\Repos\howeworkIhope\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\УАТ\Source\Repos\howeworkIhope\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe.config
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\WpfApp1.pdb
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\EntityFramework.dll
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\EntityFramework.SqlServer.dll
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\EntityFramework.xml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\EntityFramework.SqlServer.xml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\ru\EntityFramework.resources.dll
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\AddEditPage.g.cs
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\MainWindow.g.cs
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\ServicePage.g.cs
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\App.g.cs
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1_Content.g.cs
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\App.baml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\AddEditPage.baml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\MainWindow.baml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\ServicePage.baml
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.g.resources
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
+D:\3 курс\ИСП 3121\Иванов\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb

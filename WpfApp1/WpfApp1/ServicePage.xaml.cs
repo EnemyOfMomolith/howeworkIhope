@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace WpfApp1
 {
     /// <summary>
@@ -20,10 +22,16 @@ namespace WpfApp1
     /// </summary>
     public partial class ServicePage : Page
     {
+        int CountRecords;
+        int CountPage;
+        int CurrentPage = 0;
+
+        List<Service> CurrentPageList = new List<Service>();
+        List<Service> TableList;
         public ServicePage()
         {
             InitializeComponent();
-            var currentServices = Иванов_autoserviceEntities.GetContext().Service.ToList();
+            var currentServices = Иванов_autoserviceEntities1.GetContext().Service.ToList();
             ServiceListView.ItemsSource = currentServices;
 
             ComboType.SelectedIndex = 0;
@@ -33,7 +41,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            manager.MainFrame.Navigate(new AddEditPage());
+            manager.MainFrame.Navigate(new AddEditPage(null));
         }
 
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,7 +66,7 @@ namespace WpfApp1
 
         private void UpdateServices()
         {
-            var currentServices = Иванов_autoserviceEntities.GetContext().Service.ToList();
+            var currentServices = Иванов_autoserviceEntities1.GetContext().Service.ToList();
 
             if(ComboType.SelectedIndex == 0)
             {
@@ -100,6 +108,119 @@ namespace WpfApp1
             ServiceListView.ItemsSource = currentServices;
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Service));
+        }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                Иванов_autoserviceEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = Иванов_autoserviceEntities1.GetContext().Service.ToList();
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentService = (sender as Button).DataContext as Service;
+            //Проверка
+            var currentClientServices = Иванов_autoserviceEntities1.GetContext().ClientService.ToList();
+            currentClientServices = currentClientServices.Where(p => p.ServiceID == currentService.ID).ToList();
+
+            if (currentClientServices.Count != 0)
+                MessageBox.Show("Невозможно удалить, так как существуют записи на эту услугу");
+            else
+            {
+                if (MessageBox.Show("Вы точно хотите выполнить удаление?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        Иванов_autoserviceEntities1.GetContext().Service.Remove(currentService);
+                        Иванов_autoserviceEntities1.GetContext().SaveChanges();
+
+                        ServiceListView.ItemsSource = Иванов_autoserviceEntities1.GetContext().Service.ToList();
+                        UpdateServices();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+            }
+
+            
+        }
+
+        private void LeftDirButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightDirButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void ChangePage(int direction, int? selectedPage)
+        {
+            CurrentPageList.Clear();
+            CountRecords = TableList.Count;
+            if (CountRecords % 10 > 0) CountPage = CountRecords / 10 + 1;
+            else CountPage = CountRecords / 10;
+
+            Boolean Ifupdate = true;
+
+            int min;
+            if (selectedPage.HasValue)
+            {
+                if (selectedPage >= 0 && selectedPage <= CountPage)
+                {
+                    CurrentPage = (int)selectedPage;
+                    min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
+                    for (int i = CurrentPage * 10; i < min; i++) CurrentPageList.Add(TableList[i]);
+                }
+                
+            }
+            else
+            {
+                switch (direction)
+                {
+                    case 1:
+                        if (CurrentPage > 0)
+                        {
+                            CurrentPage--;
+                            min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
+                            for (int i = CurrentPage * 10; i < min; i++) CurrentPageList.Add(TableList[i]);
+                        }
+                        else Ifupdate = false;
+                        break;
+                    case 2:
+                        if (CurrentPage < CountPage - 1)
+                        {
+                            CurrentPage++;
+                            min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
+                            for (int i = CurrentPage * 10; i < min; i++) CurrentPageList.Add(TableList[i]);
+                        }
+                        else Ifupdate = false;
+                        break;
+                }
+                if (Ifupdate)
+                {
+                    PageListBox.Items.Clear();
+                    for(int i = 1; i <= CountPage; i++)
+                    {
+                        PageListBox.Items.Add(i);
+                    }
+                    ServiceListView.ItemsSource = CurrentPageList;
+                    ServiceListView.Items.Refresh();
+                }
+            }
+        }
     }
 }
