@@ -212,21 +212,22 @@ namespace WpfApp1
                         else Ifupdate = false;
                         break;
                 }
-                if (Ifupdate)
+                
+            }
+            if (Ifupdate)
+            {
+                PageListBox.Items.Clear();
+                for (int i = 1; i <= CountPage; i++)
                 {
-                    PageListBox.Items.Clear();
-                    for(int i = 1; i <= CountPage; i++)
-                    {
-                        PageListBox.Items.Add(i);
-                    }
-
-                    min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * +10 : CountRecords;
-                    TBCount.Text = min.ToString();
-                    TBAllRecords.Text = " из " + CountRecords.ToString();
-
-                    ServiceListView.ItemsSource = CurrentPageList;
-                    ServiceListView.Items.Refresh();
+                    PageListBox.Items.Add(i);
                 }
+
+                min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * +10 : CountRecords;
+                TBCount.Text = min.ToString();
+                TBAllRecords.Text = " из " + CountRecords.ToString();
+
+                ServiceListView.ItemsSource = CurrentPageList;
+                ServiceListView.Items.Refresh();
             }
         }
 
